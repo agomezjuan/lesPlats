@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./medias/logo-small.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/styles.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Les Petits Plats</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="medias/logo.png" alt="logo" />
+        <h2>Les Petits Plats</h2>
+      </div>
+    </header>
+    <section class="chercherBar">
+      <div class="chercherbar1">
+        <input
+          type="text"
+          placeholder="Rechercher une recette"
+          name="chercher"
+          id="chercher"
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </section>
+
+    <section id="selected-filter"></section>
+
+    <section class="filters">
+      <div class="ingredient">
+        <select name="ingredient" id="ingredient">
+          <option value="">ingredient</option>
+        </select>
+      </div>
+      <div class="appareils">
+        <select name="appareils" id="appareils">
+          <option value="">appareils</option>
+        </select>
+      </div>
+      <div class="ustensiles">
+        <select name="ustensiles" id="ustensiles">
+          <option value="">ustensiles</option>
+        </select>
+      </div>
+    </section>
+    <section id="plats"></section>
+
+    <script type="module" src="./scripts/index.js" defer></script>
+  </body>
+</html>

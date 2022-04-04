@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 42px 0 17px 0;
+}
+
+header .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .logo h2 {
+  color: #D04F4F;
+}
+
+.chercherBar, .filters {
+  width: 100%;
+  padding: 0 100px;
+  position: relative;
+}
+
+#chercher {
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 2px solid aliceblue;
+  border-radius: 5px;
+}
+
+#chercher:focus {
+  outline: 2px solid #D04F4F;
+}
+
+.chercherbar1 i {
+  position: absolute;
+  top: 12px;
+  right: 115px;
+  color: gray;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px 100px;
+}
+
+.filters .ingredient,
+.filters .appareils,
+.filters .ustensiles {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.ingredient {
+  color: white;
+  background-color: #3282F7;
+}
+
+.appareils {
+  background-color: #68d9a4;
+}
+
+.ustensiles {
+  background-color: #ED6454;
+}
+
+.ingredient select {
+  background-color: #3282F7;
+  border: none;
+  color: white;
+}
+
+.appareils select {
+  background-color: #68d9a4;
+  border: none;
+  color: white;
+}
+
+.ustensiles select {
+  background-color: #ED6454;
+  border: none;
+  color: white;
+}
+
+/* plats styles */
+#plats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  padding: 0 100px;
+}
+
+#plats .single-plat {
+  width: 80%;
+  max-width: 380px;
+  border-radius: 10px;
+  background-color: #C7BEBE;
+  overflow: hidden;
+  margin: 30px 20px;
+  box-shadow: 0 1px 3px gray;
+  transform: translateY(0px);
+  transition: transform 0.5s ease-out;
+}
+
+#plats .single-plat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 5px gray;
+  transition: box-shadow, transform 0.5s ease-out;
+}
+
+#plats .single-plat .plat-image {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+
+#plats .single-plat .plat-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #E7E7E7;
+  height: 250px;
+}
+
+.plat-header {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.plat-header .time {
+  min-width: 80px;
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  text-align: right;
+}
+
+.plat-header h3 {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+}
+
+.plat-body {
+  height: 150px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plat-body .ingredients {
+  padding-left: 10px;
+  width: 50%;
+  min-width: 160px;
+}
+
+.plat-body .ingredients li {
+  list-style: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.plat-body .description span {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+  max-height: 145px;
+}
+
+#selected-filter {
+  padding: 10px 100px;
+}
+
+#selected-filter .ing, #selected-filter .app, #selected-filter .ute {
+  display: inline-block;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 16px;
+  margin: 3px;
+}
+
+#selected-filter .ing .fa-circle-xmark, #selected-filter .app .fa-circle-xmark, #selected-filter .ute .fa-circle-xmark {
+  cursor: pointer;
+}
+
+#selected-filter .ing .fa-circle-xmark:hover, #selected-filter .app .fa-circle-xmark:hover, #selected-filter .ute .fa-circle-xmark:hover {
+  color: #977571;
+}
+
+#selected-filter .ing {
+  background-color: #3282F7;
+}
+
+#selected-filter .app {
+  background-color: #68d9a4;
+}
+
+#selected-filter .ute {
+  background-color: #ed6454;
+}
+/*# sourceMappingURL=styles.css.map */
