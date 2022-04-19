@@ -33,32 +33,32 @@ function searchBarResults(recipes) {
 
 function loadFilters(recipes) {
   const { allIngredients, allUstensils, allAppliance } = allFilters(recipes);
-  const ingredientsBlock = document.querySelector("#ingredient");
-  const appareilsBlock = document.querySelector("#appareils");
-  const utensilesBlock = document.querySelector("#ustensiles");
+  const ingredientsBlock = document.querySelector("#ingredients-list");
+  const appliancesBlock = document.querySelector("#appliances-list");
+  const ustensilsBlock = document.querySelector("#ustensils-list");
 
   allIngredients.forEach((ingredient) => {
-    ingredientsBlock.innerHTML += `<option>${ingredient}</option>`;
+    ingredientsBlock.innerHTML += `<li role="option" class="ingredients-option">${ingredient}</li>`;
   });
 
   allAppliance.forEach((appliance) => {
-    appareilsBlock.innerHTML += `<option>${appliance}</option>`;
+    appliancesBlock.innerHTML += `<li role="option" class="appliances-option">${appliance}</li>`;
   });
 
   allUstensils.forEach((utensils) => {
-    utensilesBlock.innerHTML += `<option>${utensils}</option>`;
+    ustensilsBlock.innerHTML += `<li role="option" class="ustensils-option">${utensils}</li>`;
   });
 }
 
 function selectionFilter() {
   selectedFilter.innerHTML = "";
   const selectedList = [];
-  const ingredientsBlock = document.querySelector("#ingredient");
-  const appareilsBlock = document.querySelector("#appareils");
-  const utensilesBlock = document.querySelector("#ustensiles");
+  const ingredientsBlock = document.querySelector("#ingredients-list");
+  const appliancesBlock = document.querySelector("#appliances-list");
+  const ustensilsBlock = document.querySelector("#ustensils-list");
 
   ingredientsBlock.addEventListener("click", function (e) {
-    const ingredient = e.target.value;
+    const ingredient = e.target.innerText;
     if (ingredient) {
       if (!selectedList.includes(ingredient)) {
         selectedList.push(ingredient);
@@ -77,7 +77,7 @@ function selectionFilter() {
     }
   });
 
-  appareilsBlock.addEventListener("click", function (e) {
+  appliancesBlock.addEventListener("click", function (e) {
     const appliance = e.target.value;
     if (appliance) {
       if (!selectedList.includes(appliance)) {
@@ -95,7 +95,7 @@ function selectionFilter() {
     }
   });
 
-  utensilesBlock.addEventListener("click", function (e) {
+  ustensilsBlock.addEventListener("click", function (e) {
     if (e.target.value) {
       if (!selectedList.includes(e.target.value)) {
         selectedList.push(e.target.value);

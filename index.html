@@ -41,24 +41,49 @@
     <section id="selected-filter"></section>
 
     <section class="filters">
-      <div class="ingredient">
-        <select name="ingredient" id="ingredient">
-          <option value="">ingredient</option>
-        </select>
+      <div class="ingredients-box">
+        <button id="ingredients-btn" class="tag-btn">
+          <label for="search-ingredients" class="tag-label">Ingrédients</label>
+          <input
+            id="search-ingredients"
+            class="search-tag"
+            type="text"
+            placeholder=""
+          />
+          <i class="fas fa-chevron-down tag-arrow"></i>
+        </button>
+        <ul role="listbox" id="ingredients-list" class="tags-list scroll"></ul>
       </div>
-      <div class="appareils">
-        <select name="appareils" id="appareils">
-          <option value="">appareils</option>
-        </select>
+      <div class="appliances-box">
+        <button id="appliances-btn" class="tag-btn">
+          <label for="search-appliances" class="tag-label">Appareils</label>
+          <input
+            id="search-appliances"
+            class="search-tag"
+            type="text"
+            placeholder=""
+          />
+          <i class="fas fa-chevron-down tag-arrow"></i>
+        </button>
+        <ul role="listbox" id="appliances-list" class="tags-list scroll"></ul>
       </div>
-      <div class="ustensiles">
-        <select name="ustensiles" id="ustensiles">
-          <option value="">ustensiles</option>
-        </select>
+      <div class="ustensils-box">
+        <button id="ustensils-btn" class="tag-btn">
+          <label for="search-ustensils" class="tag-label">Ustensiles</label>
+          <input
+            id="search-ustensils"
+            class="search-tag"
+            type="text"
+            placeholder=""
+          />
+          <i class="fas fa-chevron-down tag-arrow"></i>
+        </button>
+        <ul role="listbox" id="ustensils-list" class="tags-list scroll"></ul>
       </div>
     </section>
     <section id="plats"></section>
 
     <script type="module" src="./scripts/index.js" defer></script>
+    <script src="./scripts/modules/tags.js"></script>
   </body>
 </html>

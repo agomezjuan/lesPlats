@@ -3,8 +3,6 @@ export const allFilters = (recipes) => {
   let allUstensils = [];
   let allAppliance = [];
 
-  console.log(recipes);
-
   recipes.forEach((recipe) => {
     allIngredients = [
       ...new Set([
