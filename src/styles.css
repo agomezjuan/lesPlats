@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 header {
@@ -36,7 +36,6 @@ header .logo h2 {
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
-
 #chercher:focus {
   outline: 2px solid #D04F4F;
 }
@@ -54,10 +53,7 @@ header .logo h2 {
   justify-content: flex-start;
   padding: 15px 100px;
 }
-
-.filters .ingredient,
-.filters .appareils,
-.filters .ustensiles {
+.filters .ingredient, .filters .appareils, .filters .ustensiles {
   color: white;
   padding: 5px;
   border-radius: 5px;
@@ -91,7 +87,6 @@ header .logo h2 {
   flex-flow: row wrap;
   padding: 0 100px;
 }
-
 #plats .single-plat {
   width: 80%;
   max-width: 380px;
@@ -103,19 +98,16 @@ header .logo h2 {
   transform: translateY(0px);
   transition: transform 0.5s ease-out;
 }
-
 #plats .single-plat:hover {
   transform: translateY(-5px);
   box-shadow: 0 2px 5px gray;
   transition: box-shadow, transform 0.5s ease-out;
 }
-
 #plats .single-plat .plat-image {
   width: 100%;
   object-fit: cover;
   height: 200px;
 }
-
 #plats .single-plat .plat-content {
   width: 100%;
   display: flex;
@@ -133,18 +125,17 @@ header .logo h2 {
   justify-content: space-between;
   padding: 10px;
 }
-
 .plat-header .time {
   min-width: 80px;
   font-size: 14px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: right;
 }
 
 .plat-header h3 {
   font-size: 18px;
   font-weight: 400;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .plat-body {
@@ -153,32 +144,30 @@ header .logo h2 {
   display: flex;
   justify-content: space-between;
 }
-
 .plat-body .ingredients {
   padding-left: 10px;
   width: 50%;
   min-width: 160px;
 }
-
 .plat-body .ingredients li {
   list-style: none;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
-
 .plat-body .description span {
   overflow: hidden;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-  font-family: 'Lato', sans-serif;
-  word-wrap: break-word;
-  font-size: 11px;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical !important;
+  /* autoprefixer: on */
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
   padding: 0 10px;
 }
 
 #selected-filter {
   padding: 10px 100px;
 }
-
 #selected-filter .ing, #selected-filter .app, #selected-filter .ute {
   display: inline-block;
   font-size: 0.7rem;
@@ -187,24 +176,19 @@ header .logo h2 {
   border-radius: 0.25rem;
   margin: 3px;
 }
-
 #selected-filter .ing .fa-circle-xmark, #selected-filter .app .fa-circle-xmark, #selected-filter .ute .fa-circle-xmark {
   cursor: pointer;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
-
 #selected-filter .ing .fa-circle-xmark:hover, #selected-filter .app .fa-circle-xmark:hover, #selected-filter .ute .fa-circle-xmark:hover {
   color: #977571;
 }
-
 #selected-filter .ing {
   background-color: #3282F7;
 }
-
 #selected-filter .app {
   background-color: #68d9a4;
 }
-
 #selected-filter .ute {
   background-color: #ed6454;
 }
@@ -229,7 +213,6 @@ header .logo h2 {
   color: #fff;
   font-weight: 600;
 }
-
 .tag-btn:hover {
   background-color: #918c91;
 }
@@ -248,12 +231,10 @@ header .logo h2 {
   outline: none;
   background-color: transparent;
 }
-
 .search-tag::placeholder {
   color: #fff;
   opacity: 65%;
 }
-
 .search-tag:focus {
   color: #fff;
 }
@@ -280,7 +261,7 @@ header .logo h2 {
   color: #fff;
   cursor: pointer;
   list-style: none;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 .ingredients-option:hover,
@@ -292,7 +273,6 @@ header .logo h2 {
   color: #fff;
   opacity: 65%;
 }
-
 .ingredients-option:hover .ingredients-option,
 .ingredients-option:hover .appliances-option,
 .ingredients-option:hover .ustensils-option,
@@ -352,5 +332,4 @@ header .logo h2 {
 .scroll::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 0.25rem;
-}
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

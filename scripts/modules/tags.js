@@ -5,7 +5,10 @@ tagLabel.forEach((label) => {
 
   label.addEventListener("click", (event) => {
     event.preventDefault();
+    const tagBox = event.target.parentNode.parentNode;
+    console.log(tagBox);
     label.style.display = "none";
+    tagBox.classList.add("open");
     tagInput.setAttribute("placeholder", "Rechercher");
     tagInput.style.display = "block";
     tagInput.style.width = "40rem";
@@ -16,6 +19,7 @@ const tagArrow = document.querySelectorAll(".tag-arrow");
 
 tagArrow.forEach((arrow) => {
   const tagBox = arrow.parentNode.parentNode;
+  console.log(tagBox);
   const tagBtn = arrow.parentNode;
   const tagLabel = tagBox.children[0].children[0];
   const searchTag = arrow.previousElementSibling;

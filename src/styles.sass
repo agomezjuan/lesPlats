@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap')
+
 *
     margin: 0
     padding: 0
@@ -140,15 +141,15 @@ header .logo h2
 
     & .description span
         overflow: hidden
-        display: -webkit-box !important
-        $lines: 2
+        display: -webkit-box
+        $lines: 9
         -webkit-line-clamp: $lines
-        -webkit-box-orient: vertical
+        /* autoprefixer: off */
+        -webkit-box-orient: vertical !important
+        /* autoprefixer: on */
         font-family: 'Lato', sans-serif
-        word-wrap: break-word
-        font-size: 11px
+        font-size: 14px
         padding: 0 10px
-        //height: 145px
 
 #selected-filter
     padding: 10px 100px
