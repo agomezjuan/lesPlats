@@ -43,7 +43,8 @@ function searchBarResults(recipes) {
 }
 
 /**
- *
+ * Carga la lista de ingredients, ustensils y appliance en los botones
+ * de colores
  * @param {*} recipes
  */
 function loadFilters(recipes) {
@@ -65,8 +66,11 @@ function loadFilters(recipes) {
   });
 }
 
+/**
+ * prepara listener de eventos para cada uno de los filtros
+ */
 function selectionFilter() {
-  selectedFilter.innerHTML = "";
+  const { allIngredients, allUstensils, allAppliance } = allFilters(recipes);
   const ingredientsBlock = document.querySelector("#ingredients-list");
   const appliancesBlock = document.querySelector("#appliances-list");
   const ustensilsBlock = document.querySelector("#ustensils-list");
@@ -75,9 +79,10 @@ function selectionFilter() {
   const searchAppliances = document.getElementById("search-appliances");
   const searchUstensils = document.getElementById("search-ustensils");
 
+  selectedFilter.innerHTML = "";
+
   searchIngredients.addEventListener("keyup", function (e) {
     e.preventDefault();
-    const { allIngredients } = allFilters(recipes);
     const inputValue = normalizeString(e.target.value);
 
     const matchedIngredients = allIngredients.filter((ingredient) => {
@@ -91,7 +96,6 @@ function selectionFilter() {
 
   searchUstensils.addEventListener("keyup", function (e) {
     e.preventDefault();
-    const { allUstensils } = allFilters(recipes);
     const inputValue = normalizeString(e.target.value);
 
     const matchedUstensils = allUstensils.filter((ustensil) => {
@@ -105,7 +109,6 @@ function selectionFilter() {
 
   searchAppliances.addEventListener("keyup", function (e) {
     e.preventDefault();
-    const { allAppliance } = allFilters(recipes);
     const inputValue = normalizeString(e.target.value);
 
     const matchedAppliance = allAppliance.filter((ingredient) => {
@@ -120,18 +123,17 @@ function selectionFilter() {
   // Filtro de ingredientes
   ingredientsBlock.addEventListener("click", function (e) {
     const ingredient = e.target.innerText;
-    console.log(e.target.classList[0]);
-    if (e.target.classList[0] == "ingredients-option") {
+    if (e.target.classList[0] === "ingredients-option") {
       if (!ingredientsFilter.includes(ingredient)) {
         ingredientsFilter.push(ingredient);
         selectedFilter.innerHTML += `<div class="ing"><span>${ingredient}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
-        console.log(ingredientsFilter);
+        //console.log(ingredientsFilter);
         const matchedRecipes = recipes.filter((recipe) => {
           return recipe.ingredients.some((i) =>
             i.ingredient.includes(ingredientsFilter)
           );
         });
-        console.log("coincidencias:", matchedRecipes.length);
+        console.log("Coincidencias:", matchedRecipes.length);
         recipeSection.innerHTML = "";
         showPlats(matchedRecipes);
         closeFilter();
@@ -139,9 +141,10 @@ function selectionFilter() {
     }
   });
 
+  //Filtro de appliance
   appliancesBlock.addEventListener("click", function (e) {
     const appliance = e.target.innerText;
-    if (appliance) {
+    if (e.target.classList[0] === "appliances-option") {
       if (!appliancesFilter.includes(appliance)) {
         appliancesFilter.push(appliance);
         selectedFilter.innerHTML += `<div class="app"><span>${appliance}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
@@ -159,13 +162,15 @@ function selectionFilter() {
 
   ustensilsBlock.addEventListener("click", function (e) {
     const ustensil = e.target.innerText;
-    if (ustensil) {
+    if (e.target.classList[0] === "ustensils-option") {
       if (!ustensilsFilter.includes(ustensil)) {
         ustensilsFilter.push(ustensil);
         selectedFilter.innerHTML += `<div class="ute"><span>${ustensil}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
         console.log(ustensilsFilter);
         const matchedRecipes = recipes.filter((recipe) => {
-          return recipe.ustensils.includes(ustensilsFilter);
+          return recipe.ustensils.forEach((ustensil) => {
+            return ustensilsFilter.includes(ustensil);
+          });
         });
         console.log(matchedRecipes);
         recipeSection.innerHTML = "";
@@ -176,21 +181,51 @@ function selectionFilter() {
   });
 }
 
+/* function renderAfterFilter(params) {
+  showPlats(matchedRecipes);
+} */
+
 function closeFilter() {
   const cross = document.querySelectorAll(".fa-circle-xmark");
 
   cross.forEach((el) =>
     el.addEventListener("click", (event) => {
-      console.log("me cliqueaste");
+      const clase = event.target.parentElement.classList[0];
+      console.log(clase);
 
-      event.target.parentElement.remove();
-      if (ingredientsFilter || appliancesFilter || ustensilsFilter) {
-        showPlats(recipes);
+      switch (clase) {
+        case "ing":
+          const ingredient = event.target.previousSibling.innerText;
+          ingredientsFilter.splice(ingredientsFilter.indexOf(ingredient), 1);
+          event.target.parentElement.remove();
+          console.log("filtro de ingredientes", ingredientsFilter);
+          break;
+        case "app":
+          const appliance = event.target.previousSibling.innerText;
+          appliancesFilter.splice(appliancesFilter.indexOf(appliance), 1);
+          event.target.parentElement.remove();
+          console.log("filtro de appliances", appliancesFilter);
+          break;
+        case "ute":
+          const ustensil = event.target.previousSibling.innerText;
+          ustensilsFilter.splice(appliancesFilter.indexOf(ustensil), 1);
+          event.target.parentElement.remove();
+          console.log("filtro de ustensils", ustensilsFilter);
+          break;
+
+        default:
+          if (
+            ingredientsFilter == [] &&
+            appliancesFilter == [] &&
+            ustensilsFilter == []
+          ) {
+            showPlats(recipes);
+          }
+          break;
       }
     })
   );
 }
-
 searchBarResults(recipes);
 selectionFilter();
 

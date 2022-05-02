@@ -19,7 +19,6 @@ const tagArrow = document.querySelectorAll(".tag-arrow");
 
 tagArrow.forEach((arrow) => {
   const tagBox = arrow.parentNode.parentNode;
-  console.log(tagBox);
   const tagBtn = arrow.parentNode;
   const tagLabel = tagBox.children[0].children[0];
   const searchTag = arrow.previousElementSibling;
