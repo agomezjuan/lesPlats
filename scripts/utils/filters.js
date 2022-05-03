@@ -6,18 +6,20 @@ export const allFilters = (recipes) => {
   recipes.forEach((recipe) => {
     allIngredients = [
       ...new Set([
-        ...allIngredients.sort(),
+        ...allIngredients,
         ...recipe.ingredients.map((i) => i.ingredient),
       ]),
     ];
     allUstensils = [
-      ...new Set([...allUstensils.sort(), ...recipe.ustensils.map((u) => u)]),
+      ...new Set([...allUstensils, ...recipe.ustensils.map((u) => u)]),
     ];
 
-    allAppliance = [
-      ...new Set([...allAppliance.sort(), ...[recipe.appliance]]),
-    ];
+    allAppliance = [...new Set([...allAppliance, ...[recipe.appliance]])];
   });
+
+  allIngredients = allIngredients.sort();
+  allUstensils = allUstensils.sort();
+  allAppliance = allAppliance.sort();
 
   return { allIngredients, allUstensils, allAppliance };
 };
