@@ -278,6 +278,7 @@ function renderAfterFilter() {
         <img src="./medias/sad-face-gray.svg" alt="" />
         <p>Cette recherche n'a renvoyé aucune correspondance.</p>
       </div>`;
+    document.querySelector(".matchs").remove();
   } else {
     showPlats(matchedRecipes);
 
