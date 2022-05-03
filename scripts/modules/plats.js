@@ -11,10 +11,11 @@ function getIngedients(ingredientsList) {
 }
 
 export function showPlats(platsList) {
-  platsList.forEach((plat) => {
-    const recipeSection = document.querySelector("#plats");
+  try {
+    platsList.forEach((plat) => {
+      const recipeSection = document.querySelector("#plats");
 
-    const platCard = `<article class="single-plat">
+      const platCard = `<article class="single-plat">
             <div class="plat-image">
                 <img src="" alt="">
             </div>
@@ -41,6 +42,9 @@ export function showPlats(platsList) {
             </div>
         </article>`;
 
-    recipeSection.insertAdjacentHTML("beforeend", platCard);
-  });
+      recipeSection.insertAdjacentHTML("beforeend", platCard);
+    });
+  } catch (error) {
+    console.error();
+  }
 }
