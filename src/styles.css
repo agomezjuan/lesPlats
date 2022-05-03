@@ -59,6 +59,11 @@ header .logo h2 {
   border-radius: 5px;
   margin: 5px;
 }
+.filters .matchs {
+  color: gray;
+  align-self: center;
+  font-style: italic;
+}
 
 #ingredients-btn,
 .ingredients-result-btn {
@@ -163,6 +168,23 @@ header .logo h2 {
   font-family: "Lato", sans-serif;
   font-size: 14px;
   padding: 0 10px;
+}
+
+#nomatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#nomatch img {
+  padding: 20px;
+  width: 50%;
+  max-width: 250px;
+  fill: gray;
+}
+#nomatch p {
+  color: gray;
 }
 
 #selected-filter {
