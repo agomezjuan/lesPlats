@@ -46,6 +46,7 @@ tagArrow.forEach((arrow) => {
     }
   });
 
+  // se cierra la lista al clicar en cualquier lugar fuera de ella
   window.addEventListener("click", function (e) {
     if (!arrow.contains(e.target)) {
       tagBox.classList.remove("open");
