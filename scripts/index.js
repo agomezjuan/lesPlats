@@ -184,14 +184,14 @@ function selectionFilter() {
    * @param {evento click} e
    */
   function ingredientSelection(e) {
-    const ingredient = e.target.innerText;
-
     if (e.target.classList[0] === "ingredients-option") {
+      const ingredient = normalizeString(e.target.innerText);
       //si el ingredient seleccionado no está en la lista entonces lo agrega
       if (!ingredientsFilter.includes(ingredient)) {
         ingredientsFilter.push(ingredient);
+        console.log(ingredientsFilter);
         // inserta una etiqueta de filtro en el HTML
-        selectedFilter.innerHTML += `<div class="ing"><span>${ingredient}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
+        selectedFilter.innerHTML += `<div class="ing"><span>${e.target.innerText}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
         // renderizar las coincidencias nuevamente
         renderAfterFilter();
         closeFilter();
@@ -200,13 +200,13 @@ function selectionFilter() {
   }
 
   function applianceSelection(e) {
-    const appliance = e.target.innerText;
     if (e.target.classList[0] === "appliances-option") {
+      const appliance = normalizeString(e.target.innerText);
       //si el appliance seleccionado no está en la lista entonces lo agrega
       if (!appliancesFilter.includes(appliance)) {
         appliancesFilter.push(appliance);
         // inserta una etiqueta de filtro en el HTML
-        selectedFilter.innerHTML += `<div class="app"><span>${appliance}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
+        selectedFilter.innerHTML += `<div class="app"><span>${e.target.innerText}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
         // renderizar las coincidencias nuevamente
         renderAfterFilter();
         closeFilter();
@@ -215,13 +215,13 @@ function selectionFilter() {
   }
 
   function ustensilSelection(e) {
-    const ustensil = e.target.innerText;
     if (e.target.classList[0] === "ustensils-option") {
+      const ustensil = normalizeString(e.target.innerText);
       //si el ustensil seleccionado no está en la lista entonces lo agrega
       if (!ustensilsFilter.includes(ustensil)) {
         ustensilsFilter.push(ustensil);
         // inserta una etiqueta de filtro en el HTML
-        selectedFilter.innerHTML += `<div class="ute"><span>${ustensil}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
+        selectedFilter.innerHTML += `<div class="ute"><span>${e.target.innerText}</span><i class="fa-regular fa-circle-xmark"></i></div>`;
         // renderizar las coincidencias nuevamente
         renderAfterFilter();
         closeFilter();
@@ -247,10 +247,12 @@ function renderAfterFilter() {
     matchedRecipes = recipes.filter((recipe) => {
       return (
         recipe.ingredients.some((i) =>
-          ingredientsFilter.includes(i.ingredient)
+          ingredientsFilter.includes(normalizeString(i.ingredient))
         ) &&
-        appliancesFilter.includes(recipe.appliance) &&
-        recipe.ustensils.some((ustensil) => ustensilsFilter.includes(ustensil))
+        appliancesFilter.includes(normalizeString(recipe.appliance)) &&
+        recipe.ustensils.some((ustensil) =>
+          ustensilsFilter.includes(normalizeString(ustensil))
+        )
       );
     });
     console.log(matchedRecipes);
@@ -264,9 +266,9 @@ function renderAfterFilter() {
   ) {
     matchedRecipes = recipes.filter((recipe) => {
       return (
-        recipe.ustensils.some((ustensil) =>
-          ustensilsFilter.includes(ustensil)
-        ) && appliancesFilter.includes(recipe.appliance)
+        recipe.ingredients.some((i) =>
+          ingredientsFilter.includes(normalizeString(i.ingredient))
+        ) && appliancesFilter.includes(normalizeString(recipe.appliance))
       );
     });
     console.log(matchedRecipes);
@@ -281,9 +283,11 @@ function renderAfterFilter() {
     matchedRecipes = recipes.filter((recipe) => {
       return (
         recipe.ingredients.some((i) =>
-          ingredientsFilter.includes(i.ingredient)
+          ingredientsFilter.includes(normalizeString(i.ingredient))
         ) &&
-        recipe.ustensils.some((ustensil) => ustensilsFilter.includes(ustensil))
+        recipe.ustensils.some((ustensil) =>
+          ustensilsFilter.includes(normalizeString(ustensil))
+        )
       );
     });
     console.log(matchedRecipes);
@@ -297,8 +301,10 @@ function renderAfterFilter() {
   ) {
     matchedRecipes = recipes.filter((recipe) => {
       return (
-        appliancesFilter.includes(recipe.appliance) &&
-        recipe.ustensils.some((ustensil) => ustensilsFilter.includes(ustensil))
+        appliancesFilter.includes(normalizeString(recipe.appliance)) &&
+        recipe.ustensils.some((ustensil) =>
+          ustensilsFilter.includes(normalizeString(ustensil))
+        )
       );
     });
     console.log("coincidencias:", matchedRecipes.length);
@@ -312,7 +318,7 @@ function renderAfterFilter() {
   ) {
     matchedRecipes = recipes.filter((recipe) => {
       return recipe.ingredients.some((i) =>
-        ingredientsFilter.includes(i.ingredient)
+        ingredientsFilter.includes(normalizeString(i.ingredient))
       );
     });
     console.log("Coincidencias:", matchedRecipes.length);
@@ -325,7 +331,7 @@ function renderAfterFilter() {
     ustensilsFilter.length == 0
   ) {
     matchedRecipes = recipes.filter((recipe) => {
-      return appliancesFilter.includes(recipe.appliance);
+      return appliancesFilter.includes(normalizeString(recipe.appliance));
     });
     console.log("coincidencias:", matchedRecipes.length);
   }
@@ -338,7 +344,7 @@ function renderAfterFilter() {
   ) {
     matchedRecipes = recipes.filter((recipe) => {
       return recipe.ustensils.some((ustensil) =>
-        ustensilsFilter.includes(ustensil)
+        ustensilsFilter.includes(normalizeString(ustensil))
       );
     });
     console.log("coincidencias:", matchedRecipes.length);
@@ -347,6 +353,8 @@ function renderAfterFilter() {
   // Si no hay ningun filtro de muestra todos los platos
   // y retorna void
   else {
+    // limpia la seccion de platos antes de mostrar los nuevos resulados
+    recipeSection.innerHTML = "";
     showPlats(recipes);
     // if (document.querySelector(".matchs")) {
     //   document.querySelector(".matchs").remove();
